@@ -1,14 +1,69 @@
-<!DOCTYPE html>
+{% load static %}
 <html lang="en">
 
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>Simple Django App</title>
+        <link rel="stylesheet" href="{% static "css/material-icons.css" %} ">
+        <link href="https://fonts.googleapis.com/icon?family=Material+Icons"
+      rel="stylesheet">
+    <link rel="stylesheet" href="{% static "css/materialize.min.css" %} ">
+    <link rel="stylesheet" href="{% static "css/style.css"  %} ">
 </head>
 
 <body>
-<h2>Hello </h2>
+    <nav class="blue">
+        <div class="container nav-wrapper">
+            <a href="" class="brand-logo">Lovel</a>
+            <ul id="nav-mobile" class="right">
+                <li>
+                    <a href="">Home</a>
+                </li>
+            </ul>
+        </div>
+    </nav>
+
+<div class="container">
+<section>
+<h1 class="center flow-text">PLEASE ENTER WHAT YOU WANT TO SEARCH FOR IN LOVEL SEARCH</h1>
+<div class="row">
+    <div class="col s4">
+        <div class="center">
+            <i class="large material-icons" style="color: royalBlue">flash_on</i>
+            <p>Fast Web Scarper</p>
+            <p class="light center">Scrape away the right here with a beaautiful GUI</p> 
+        </div>
+    </div>
+    <div class="col s4">
+        <div class="center">
+            <i class="large material-icons" style="color: royalBlue">camera</i>
+            <p>Filter Searches</p>
+            <p class="light center">I build more customize GUI to meet yor needs</p> 
+        </div>
+    </div>
+    <div class="col s4">
+        <div class="center">
+            <i class="large material-icons" style="color: royalBlue">chrome_reader_mode</i>
+            <p>Keep It Simple Frontend</p>
+            <p class="light center">Easy to use/understand frontend design</p> 
+        </div>
+    </div>
+</div>
+</section>
+<section class="center">
+    <h2 class="light flow-text"> New Search <h2>
+
+    <form action="{% url 'simple_app:search' %}" method ="POST">
+        {% csrf_token %}
+    <input type="text" name="search" placeholder="Enter search"/>
+    <button type="submit" value="Search" class="btn blue glow z-index">Send<i class="material-icons right">send</i></button>
+    </form >
+</section>
+{% block content %}
+{% endblock content %}
+</div>
+  <script src="{% static 'js/jquery.min.js' %}"></script>
+    <script src="{% static 'js/materialize.min.js' %}"></script>
 </body>
 
 </html>
